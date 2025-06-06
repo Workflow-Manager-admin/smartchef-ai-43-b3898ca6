@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import AIGenerator from "./AIGenerator";
 
 // PUBLIC_INTERFACE
 function Sidebar({ currentSection, setSection }) {
@@ -239,6 +240,8 @@ function App() {
   const [user, setUser] = useState(null); // {name: ...}
   const [savedRecipes, setSavedRecipes] = useState([]);
 
+
+
   // "Authentication" demo handlers
   function handleLogin() {
     setUser({ name: "Chef Lila" });
@@ -332,6 +335,10 @@ function App() {
           onSaveRecipe={user ? handleSaveRecipe : null}
           savedRecipes={savedRecipes}
         />
+        <div style={{ marginTop: "3em", borderTop: "1px solid #ccc", paddingTop: "2em" }}>
+          <h2 style={{ fontSize: "1.5em", marginBottom: "1em" }}>Ask AI to Suggest Recipes</h2>
+          <AIGenerator /> {/* 👈 This adds your AI component */}
+        </div>
       </div>
     );
   }
@@ -360,6 +367,11 @@ function App() {
       </main>
     </div>
   );
+
+
+
 }
+
+
 
 export default App;
